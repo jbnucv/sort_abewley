@@ -20,7 +20,7 @@ from __future__ import print_function
 import os
 import numpy as np
 import matplotlib
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from skimage import io
@@ -248,9 +248,10 @@ class Sort(object):
         # remove dead tracklet
         if(trk.time_since_update > self.max_age):
           self.trackers.pop(i)
+
     if(len(ret)>0):
-      return np.concatenate(ret)
-    return np.empty((0,5))
+      return np.concatenate(ret), trks
+    return np.empty((0,5)), trks
 
 def parse_args():
     """Parse input arguments."""
